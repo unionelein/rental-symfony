@@ -4,12 +4,12 @@
     <div class="col-sm-2">
         <div class="menu">
             <p class="text-center">Покупка</p>
-            <ul>
-                <li><a href="{{ path('products_by_category', {typeName: type}) }}"
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type}) }}"
                        class="js-category"
                        data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
                 {% for category in categories %}
-                    <li><a href="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
+                    <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
                            data-url="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
                            class="js-category">
                             {{ category.name }}</a>
