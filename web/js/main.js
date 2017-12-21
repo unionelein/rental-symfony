@@ -1,4 +1,8 @@
 $(document).ready(function() {
+    $(window).off('popstate').on('popstate', function() {
+        $( location ).attr("href", $(location).attr('href'));
+    });
+
     var $menu = $('.menu');
     var $productsWrapper = $('.products-wrapper');
     
