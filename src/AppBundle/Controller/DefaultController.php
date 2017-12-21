@@ -62,7 +62,6 @@ class DefaultController extends Controller
         $products = $em->getRepository(Product::class)->findProductsByCategoryType($category, $type);
         $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);;
 
-
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
                 "products" => $this->renderView('@App/products.html.twig', [
@@ -81,14 +80,14 @@ class DefaultController extends Controller
 
     /**
      * @Route("/{typeName}/{category}/{productSlug}", name="product")
-     * @Method({"GET"})
      *
+     * @param  Request $request
      * @param  $typeName
      * @param  $category
      * @param  $productSlug
      * @return Response
      */
-    public function productAction($typeName, $category, $productSlug)
+    public function productAction(Request $request, $typeName, $category, $productSlug)
     {
         $type = $this->get('app_manager')->getTypeByName($typeName);
 
@@ -106,10 +105,20 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('404');
         }
 
-        return $this->render('@App/product.html.twig', [
-            'product' => $product,
-            'categories' => $categories,
-            'type' => $typeName,
-        ]);
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                "products" => $this->renderView('@App/product.html.twig', [
+                    'product' => $product,
+                    'type' => $typeName
+                ])
+            ]);
+        } else {
+            return $this->render('@App/main.html.twig', [
+                'product' => $product,
+                'categories' => $categories,
+                'type' => $typeName,
+                'page' => 'product'
+            ]);
+        }
     }
 }

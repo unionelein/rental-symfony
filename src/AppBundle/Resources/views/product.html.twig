@@ -1,15 +1,12 @@
-{% extends '@App/main.html.twig' %}
-
-{% block production %}
-    <div class="row product">
-        <div class="col-sm-7">
-            <img src="{{ asset('images/perforator.jpg') }}" alt="perforator">
-        </div>
-
-        <div class="col-sm-5">
-            <h2>{{ product.name }}</h2>
-            <h4>{{ product.description }}</h4>
-            <span class="price">{{ product.price }}$</span>
-        </div>
+<div class="row product">
+    <div class="col-sm-7">
+        <img src="{{ asset('images/perforator.jpg') }}" alt="perforator">
     </div>
-{% endblock %}
+
+    <div class="col-sm-5">
+        <h2>{{ product.name }}</h2>
+        <h4>{{ product.description }}</h4>
+        <span class="price">{{ product.price }}$</span>
+    </div>
+</div>
+

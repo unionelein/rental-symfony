@@ -5,9 +5,11 @@
         <div class="menu">
             <p class="text-center">Покупка</p>
             <ul>
-                <li><a href="#" class="js-category" data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
+                <li><a href="{{ path('products_by_category', {typeName: type}) }}"
+                       class="js-category"
+                       data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
                 {% for category in categories %}
-                    <li><a href="#"
+                    <li><a href="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
                            data-url="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
                            class="js-category">
                             {{ category.name }}</a>
@@ -19,7 +21,11 @@
 
     <div class="col-sm-10 products-wrapper">
         {% block production %}
-            {% include '@App/products.html.twig' %}
+            {% if page is defined and page == 'product' %}
+                {% include '@App/product.html.twig' %}
+            {% else %}
+                {% include '@App/products.html.twig' %}
+            {% endif %}
         {% endblock %}
     </div>
 {% endblock %}
