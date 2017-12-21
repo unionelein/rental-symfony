@@ -1,0 +1,8 @@
+{% for product in products %}
+    <a href="{{ path('product', { typeName: type, category: product.category.slug, productSlug: product.slug }) }}" class="product-wrapper">
+        <h3 class="name">{{ product.name }}</h3>
+        <img src="{{ asset('images/perforator.jpg') }}" alt="perforator">
+        <p class="description">{{ product.description }}</p>
+        <span class="price">{{ product.price }}$</span>
+    </a>
+{% endfor %}

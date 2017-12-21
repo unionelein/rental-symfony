@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+</head>
+<body>
+    <header>
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="logo">
+                    <img src="{{ asset('images/logo.jpg') }}" alt="">
+                </div>
+            </div>
+
+            <div class="col-sm-6"></div>
+
+            <div class="col-sm-3">
+                <div class="contacts">
+                    Адрес: Гомельская обл.,г. Гомель,ул. Гагарина, д.20, ком. 2-7<br>
+                    Телефон: +375299365114
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center about">
+            <h1>ОДО " Алькор"</h1>
+            <h3 align="center">Аренда строительной техники и покупка стройматериалов</h3>
+        </div>
+
+    </header>
+
+    <div class="row main-content">
+
+        {% block content %}{% endblock %}
+        <div class="js-loader-wrapper d-none">
+            <img src="{{ asset('images/loader.gif') }}" class="loader" alt="">
+        </div>
+    </div>
+
+    {% block javascripts %}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}
+</body>
+</html>

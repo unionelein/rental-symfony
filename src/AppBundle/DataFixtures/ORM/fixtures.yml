@@ -1,0 +1,13 @@
+AppBundle\Entity\Product:
+    product_{1..50}:
+        name: '<genus()>'
+        description: '<sentence()>'
+        price: '<numberBetween(5, 100)>'
+        category: '@category_*'
+        imgName: '<numberBetween(0, 1)>'
+        type: '<numberBetween(0, 1)>'
+
+AppBundle\Entity\Category:
+    category_{1..7}:
+        name: '<name()>'
+        type: '<numberBetween(0, 1)>'

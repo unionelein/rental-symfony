@@ -1,0 +1,38 @@
+header {
+    background-color: #ECF0F1;
+    color: deepskyblue;
+    font-weight: bold;
+}
+
+.product-wrapper {
+    display: block;
+    float:left;
+    width: 300px;
+    margin: 20px;
+    padding: 15px;
+    background-color: #5eb5e0;
+    border-radius: 5px;
+}
+
+.product-wrapper .description {
+    height: 60px;
+}
+
+.main-content {
+    margin:0 30px;
+}
+
+.product {
+    border-radius: 5px;
+    margin: 20px 50px;
+    background-color: #80bdff;
+    padding: 20px;
+}
+
+.loader {
+
+    margin:auto;
+    margin-top: 70px;
+    display: block;
+    width: 64px;
+}
