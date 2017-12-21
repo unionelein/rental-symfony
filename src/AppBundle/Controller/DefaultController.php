@@ -60,7 +60,7 @@ class DefaultController extends Controller
         $typeName = array_search($type, AppManager::TYPE);
 
         $products = $em->getRepository(Product::class)->findProductsByCategoryType($category, $type);
-        $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);;
+        $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);
 
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([

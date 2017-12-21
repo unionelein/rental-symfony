@@ -7,4 +7,6 @@
         <p class="description">{{ product.description }}</p>
         <span class="price">{{ product.price }}$</span>
     </a>
+{% else %}
+    <p class="text-info text-center">Похоже, в этой категории еще ничего нет :(</p>
 {% endfor %}

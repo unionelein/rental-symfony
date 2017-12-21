@@ -5,7 +5,9 @@ $(document).ready(function() {
 
     $('.menu').on('click', '.js-category', function (e) {
         handleCategoryOrProductClick(e);
-    }).on('click', '.js-product', function (e) {
+    });
+
+    $('.js-product').click(function (e) {
         handleCategoryOrProductClick(e);
     });
 });
