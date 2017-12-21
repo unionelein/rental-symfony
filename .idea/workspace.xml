@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de0fa6a7-cd55-4086-ae9c-dd1e4a01a477" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/images/main.jpg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/main.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/main.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Resources/views/product.html.twig" afterPath="$PROJECT_DIR$/src/AppBundle/Resources/views/product.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/css/main.css" afterPath="$PROJECT_DIR$/web/css/main.css" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,17 +83,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/css/main.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="462">
+              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -221,8 +217,8 @@
         <option value="$PROJECT_DIR$/web/js/main.js" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/main.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/product.html.twig" />
-        <option value="$PROJECT_DIR$/web/css/main.css" />
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/main.css" />
       </list>
     </option>
   </component>
@@ -400,7 +396,7 @@
       <updated>1513776330096</updated>
       <workItem from="1513776332532" duration="19168000" />
       <workItem from="1513844573558" duration="15371000" />
-      <workItem from="1513877362466" duration="11540000" />
+      <workItem from="1513877362466" duration="12403000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit(eeee dota)">
       <created>1513879276739</created>
@@ -430,11 +426,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513884397283</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="обнова внешнего вида подъехала">
+      <created>1513894352491</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1513894352491</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46079000" />
+    <option name="totallyTimeSpent" value="46942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -472,7 +475,8 @@
     <MESSAGE value="добавлена работа кнопок вперед назад браузера при ajax подгрузках других категорий" />
     <MESSAGE value="добавлена подгрузка через ajax так же и продукта" />
     <MESSAGE value="исправлен баг с отсутствием ajax подгрузки продукта" />
-    <option name="LAST_COMMIT_MESSAGE" value="исправлен баг с отсутствием ajax подгрузки продукта" />
+    <MESSAGE value="обнова внешнего вида подъехала" />
+    <option name="LAST_COMMIT_MESSAGE" value="обнова внешнего вида подъехала" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -795,14 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/base.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -811,6 +807,14 @@
             <element signature="n#style#0;n#h1#0;n#div#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h3#0;n#div#1;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
