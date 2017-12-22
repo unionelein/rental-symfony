@@ -31,4 +31,16 @@ services:
         class: AppBundle\Services\AppManager
         public: true
 
+    app.security.login_form_authenticator:
+        class: AppBundle\Security\LoginFormAuthenticator
+        autowire: true
+        public: true
+
+    app.doctrine.hash_password_listener:
+        class: AppBundle\Doctrine\HashPasswordListener
+        public: true
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
 

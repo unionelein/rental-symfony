@@ -29,12 +29,13 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", orphanRemoval=true)
+     *
      */
     private $products;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean")
      */
     private $type;
 
@@ -116,5 +117,10 @@ class Category
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }

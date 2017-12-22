@@ -6,9 +6,10 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: ru
 
 framework:
+    translator: { fallbacks: [ "ru" ] }
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
@@ -71,3 +72,33 @@ stof_doctrine_extensions:
     orm:
         default:
             sluggable: true
+
+easy_admin:
+    site_name: Аль<i>кор</i>
+    #design:
+    #    brand_color: '#9B59B6'
+    list:
+        title: '%%entity_label%%'
+        actions:
+            - { name: 'show', icon: 'eye', label: 'Посмотреть' }
+            - { name: 'edit', icon: 'pencil', label: 'Редактировать' }
+            - { name: 'delete', icon: 'remove', label: 'Удалить' }
+            - { name: 'search', icon: 'search', label: 'Поиск' }
+            - { name: 'new', icon: 'plus', label: 'Добавить' }
+    entities:
+        Product:
+            class: AppBundle\Entity\Product
+            list:
+                title: 'Продукция'
+                fields:
+                   - 'id'
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'category', label: 'Категория' }
+                   - { property: 'description', label: 'Описание' }
+                   - { property: 'imgName', label: 'Изображение', type: 'image', base_path: '/images/' }
+                   - { property: 'price', label: 'Цена' }
+                   - { property: 'type', label: 'Тип' }
+
+        Category:
+            class: AppBundle\Entity\Category
+            label: 'Категории'

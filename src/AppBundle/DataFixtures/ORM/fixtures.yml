@@ -11,3 +11,9 @@ AppBundle\Entity\Category:
     category_{1..7}:
         name: '<name()>'
         type: '<numberBetween(0, 1)>'
+
+AppBundle\Entity\User:
+    user:
+        email: suvorov1995@bk.ru
+        plainPassword: 12345
+        roles: ['ROLE_ADMIN']

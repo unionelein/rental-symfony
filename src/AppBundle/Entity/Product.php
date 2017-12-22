@@ -47,11 +47,12 @@ class Product
 
     /**
      * @ORM\Column(type="string")
+     *
      */
     private $imgName;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="boolean")
      */
     private $type;
 
@@ -181,5 +182,10 @@ class Product
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getName();
     }
 }
