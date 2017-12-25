@@ -30,7 +30,7 @@ class DefaultController extends Controller
 
         $typeName = array_search($type, AppManager::TYPE);
         $products = $em->getRepository(Product::class)->findBy(["type" => $type]);
-        $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);
+        $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
         return $this->render('@App/main.html.twig', [
             'products' => $products,
@@ -40,14 +40,14 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{typeName}/{category}", name="products_by_category", defaults={"category" = null})
+     * @Route("/{typeName}/{categorySlug}", name="products_by_category", defaults={"categorySlug" = null})
      *
      * @param Request $request
      * @param $typeName
-     * @param $category
+     * @param $categorySlug
      * @return string
      */
-    public function getProductsByCategoryAction(Request $request, $typeName, $category)
+    public function getProductsByCategoryAction(Request $request, $typeName, $categorySlug)
     {
         $type = $this->get('app_manager')->getTypeByName($typeName);
 
@@ -59,8 +59,8 @@ class DefaultController extends Controller
 
         $typeName = array_search($type, AppManager::TYPE);
 
-        $products = $em->getRepository(Product::class)->findProductsByCategoryType($category, $type);
-        $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);
+        $products = $em->getRepository(Product::class)->findProductsByCategoryAndType($categorySlug, $type);
+        $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
@@ -79,15 +79,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{typeName}/{category}/{productSlug}", name="product")
+     * @Route("/{typeName}/{categorySlug}/{productSlug}", name="product")
      *
      * @param  Request $request
      * @param  $typeName
-     * @param  $category
+     * @param  $categorySlug
      * @param  $productSlug
      * @return Response
      */
-    public function productAction(Request $request, $typeName, $category, $productSlug)
+    public function productAction(Request $request, $typeName, $categorySlug, $productSlug)
     {
         $type = $this->get('app_manager')->getTypeByName($typeName);
 
@@ -98,8 +98,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $typeName = array_search($type, AppManager::TYPE);
-        $product = $em->getRepository(Product::class)->findOneBy(["slug" => $productSlug]);
-        $categories = $em->getRepository(Category::class)->findBy(["type" => $type]);;
+        $product = $em->getRepository(Product::class)
+            ->findProductByCategorySlugAndProductSlug($categorySlug, $productSlug);
+        $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
         if (!$product) {
             throw $this->createNotFoundException('404');

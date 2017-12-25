@@ -2,8 +2,11 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Services\AppManager;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
@@ -31,7 +34,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="category_id", nullable=true, onDelete="SET NULL")
      */
     private $category;
 
@@ -46,8 +49,7 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="string")
-     *
+     * @ORM\Column(type="string", nullable=true)
      */
     private $imgName;
 
@@ -141,15 +143,28 @@ class Product
      */
     public function getImgName()
     {
-        return $this->imgName;
+        return $this->imgName ? new File('images/'.$this->imgName) : null;
     }
 
     /**
-     * @param mixed $imgName
+     * @param mixed $img
      */
-    public function setImgName($imgName)
+    public function setImgName($img)
     {
-        $this->imgName = $imgName;
+        if (!$img) {
+            return;
+        }
+
+        if (is_string($img)) {
+            $this->imgName = $img;
+            return;
+        }
+
+        $dir = 'images/';
+        $fileName = time().rand(1, 1000);
+        $img->move($dir, $fileName);
+
+        $this->imgName = $fileName;
     }
 
     /**
@@ -187,5 +202,14 @@ class Product
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    public function getTypeName()
+    {
+        switch ($this->type) {
+            case AppManager::TYPE[AppManager::POKYPKA]: return 'Покупка';
+            case AppManager::TYPE[AppManager::ARENDA]:  return 'Аренда';
+            default: return 'Не определен';
+        }
     }
 }

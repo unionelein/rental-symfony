@@ -17,15 +17,18 @@
     <header>
         <div class="row">
 
-            <div class="col-sm-3">
+            <div class="col-lg-3">
                 <div class="logo">
                     <img src="{{ asset('images/logo.png') }}" width="200px" alt="">
                 </div>
             </div>
 
-            <div class="col-sm-6"></div>
+            <div class="col-lg-6 text-center about">
+                <h1 style="margin-top:5px;">ОДО " Алькор"</h1>
+                <h3 align="center" style="padding-bottom:20px;">Аренда строительной техники и покупка стройматериалов</h3>
+            </div>
 
-            <div class="col-sm-3">
+            <div class="col-lg-3">
                 <div class="contacts">
                     Адрес: Гомельская обл.,г. Гомель,ул. Гагарина, д.20, ком. 2-7<br>
                     Телефон: +375299365114
@@ -33,19 +36,17 @@
             </div>
 
         </div>
-
-        <div class="text-center about">
-            <h1 style="margin-top:5px;">ОДО " Алькор"</h1>
-            <h3 align="center" style="padding-bottom:20px;">Аренда строительной техники и покупка стройматериалов</h3>
-        </div>
-
     </header>
 
-    <div class="row main-content">
+    <div class="main-content">
 
         {% block content %}{% endblock %}
         <div class="js-loader-wrapper d-none">
-            <img src="{{ asset('images/loader.gif') }}" class="loader" alt="">
+            <div class="cssload-container">
+                <div class="cssload-progress cssload-float cssload-shadow">
+                    <div class="cssload-progress-item"></div>
+                </div>
+            </div>
         </div>
     </div>
 

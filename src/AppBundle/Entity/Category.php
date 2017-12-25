@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -29,15 +30,14 @@ class Category
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", orphanRemoval=true)
-     *
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
      */
     private $products;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $type;
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -80,27 +80,37 @@ class Category
     }
 
     /**
+     * @param Product $product
+     */
+    public function addProduct($product)
+    {
+        if ($this->products->contains($product)) {
+            return;
+        }
+
+        $product->setCategory($this);
+        $this->products[] = $product;
+    }
+
+    /**
+     * @param Product $product
+     */
+    public function removeProduct($product)
+    {
+        if (!$this->products->contains($product)) {
+            return;
+        }
+
+        $product->setCategory(null);
+        $this->products->removeElement($product);
+    }
+
+    /**
      * @param mixed $products
      */
     public function setProducts($products)
     {
         $this->products = $products;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
     }
 
     /**

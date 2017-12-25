@@ -88,6 +88,7 @@ easy_admin:
     entities:
         Product:
             class: AppBundle\Entity\Product
+            label: 'Продукция'
             list:
                 title: 'Продукция'
                 fields:
@@ -95,10 +96,58 @@ easy_admin:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
                    - { property: 'description', label: 'Описание' }
-                   - { property: 'imgName', label: 'Изображение', type: 'image', base_path: '/images/' }
+                   - { property: 'imgName', label: 'Изображение', type: 'image' }
                    - { property: 'price', label: 'Цена' }
-                   - { property: 'type', label: 'Тип' }
+                   - { property: 'typeName', label: 'Тип'  }
+            show:
+                title: 'Продукция'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'category', label: 'Категория' }
+                   - { property: 'description', label: 'Описание' }
+                   - { property: 'imgName', label: 'Изображение', type: 'image' }
+                   - { property: 'price', label: 'Цена' }
+                   - { property: 'typeName', label: 'Тип' }
+            edit:
+                title: 'Продукция'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'category', label: 'Категория' }
+                   - { property: 'description', label: 'Описание' }
+                   - { property: 'imgName', label: 'Изображение', type: 'file' }
+                   - { property: 'price', label: 'Цена' }
+                   - { property: 'type', label: 'Тип',  type: 'choice', type_options: { choices: { 'Аренда': 0, 'Покупка': 1 }, required: true } }
+            new:
+                title: 'Продукция'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'category', label: 'Категория' }
+                   - { property: 'description', label: 'Описание' }
+                   - { property: 'imgName', label: 'Изображение', type: 'file' }
+                   - { property: 'price', label: 'Цена' }
+                   - { property: 'type', label: 'Тип',  type: 'choice', type_options: { choices: { 'Аренда': 0, 'Покупка': 1 }, required: true } }
 
         Category:
             class: AppBundle\Entity\Category
             label: 'Категории'
+            list:
+                title: 'Категории'
+                fields:
+                   - 'id'
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'products', label: 'Продукция' }
+            show:
+                title: 'Категории'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'products', label: 'Продукция' }
+            edit:
+                title: 'Категории'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'products', label: 'Продукция', type_options: { by_reference: false } }
+            new:
+                title: 'Категории'
+                fields:
+                   - { property: 'name', label: 'Название' }
+                   - { property: 'products', label: 'Продукция', type_options: { by_reference: false } }

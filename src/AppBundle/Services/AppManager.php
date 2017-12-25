@@ -11,9 +11,12 @@ namespace AppBundle\Services;
 
 class AppManager
 {
+    const ARENDA = "arenda";
+    const POKYPKA = "pokypka";
+
     const TYPE = [
-        "arenda" => 0,
-        "pokypka" => 1
+        self::ARENDA => 0,
+        self::POKYPKA => 1
     ];
 
     public function __construct()

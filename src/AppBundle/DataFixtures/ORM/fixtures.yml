@@ -1,16 +1,62 @@
 AppBundle\Entity\Product:
-    product_{1..50}:
-        name: '<genus()>'
+    product_{1..5}:
+        name: 'Гвозди <numberBetween(1, 100)>'
         description: '<sentence()>'
-        price: '<numberBetween(5, 100)>'
-        category: '@category_*'
-        imgName: '<numberBetween(0, 1)>'
-        type: '<numberBetween(0, 1)>'
+        price: '<numberBetween(2, 7)>'
+        category: '@category_gvozdi'
+        imgName: 'gvozdi.jpg'
+        type: 1
+    product_{6..10}:
+        name: 'Кирпич <numberBetween(1, 100)>'
+        description: '<sentence()>'
+        price: '<numberBetween(5, 10)>'
+        category: '@category_kirpich'
+        imgName: 'kirpich.jpg'
+        type: 1
+    product_{11..15}:
+        name: 'Цемент <numberBetween(1, 100)>'
+        description: '<sentence()>'
+        price: '<numberBetween(10, 30)>'
+        category: '@category_cement'
+        imgName: 'cement.jpg'
+        type: 1
+    product_{16..20}:
+        name: 'Перфоратор <numberBetween(1, 100)>'
+        description: '<sentence()>'
+        price: '<numberBetween(10, 20)>'
+        category: '@category_perforator'
+        imgName: 'perforator.jpg'
+        type: 0
+    product_{21..25}:
+        name: 'Бетономешалка <numberBetween(1, 100)>'
+        description: '<sentence()>'
+        price: '<numberBetween(15, 40)>'
+        category: '@category_betonomeshalka'
+        imgName: 'betonomeshalka.jpg'
+        type: 0
+    product_{26..30}:
+        name: 'Болгарка <numberBetween(1, 100)>'
+        description: '<sentence()>'
+        price: '<numberBetween(3, 14)>'
+        category: '@category_bolgarka'
+        imgName: 'bolgarka.jpg'
+        type: 0
 
 AppBundle\Entity\Category:
-    category_{1..7}:
-        name: '<name()>'
-        type: '<numberBetween(0, 1)>'
+    category_gvozdi:
+        name: 'Гвозди'
+    category_kirpich:
+        name: 'Кирпич'
+    category_cement:
+        name: 'Цемент'
+    category_perforator:
+        name: 'Перфораторы'
+    category_betonomeshalka:
+        name: 'Бетономешалки'
+    category_bolgarka:
+        name: 'Болгарки'
+
+
 
 AppBundle\Entity\User:
     user:

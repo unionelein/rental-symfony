@@ -1,31 +1,50 @@
 {% extends '@App/base.html.twig' %}
 
 {% block content %}
-    <div class="col-sm-2">
-        <div class="menu">
-            <p class="text-center">Покупка</p>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type}) }}"
-                       class="js-category"
-                       data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
-                {% for category in categories %}
-                    <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
-                           data-url="{{ path('products_by_category', {typeName: type, category: category.slug}) }}"
-                           class="js-category">
-                            {{ category.name }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </div>
+    <p class="text-center" style="margin: 15px 0 0 0;">
 
-    <div class="col-sm-10 products-wrapper">
-        {% block production %}
-            {% if page is defined and page == 'product' %}
-                {% include '@App/product.html.twig' %}
-            {% else %}
-                {% include '@App/products.html.twig' %}
-            {% endif %}
-        {% endblock %}
+        <a href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::ARENDA') }) }}"
+           {% if type == constant('AppBundle\\Services\\AppManager::ARENDA') %}class="active"{% endif %}
+        >Аренда</a> |
+
+        <a href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}"
+           {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}class="active"{% endif %}
+        >Покупка</a>
+
+    </p>
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="menu">
+                <p class="text-center">
+                    {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}
+                        Покупка стройматериалов
+                    {% else %}
+                        Аренда оборудования
+                    {% endif %}
+                </p>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type}) }}"
+                           class="js-category"
+                           data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
+                    {% for category in categories %}
+                        <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type, categorySlug: category.slug}) }}"
+                               data-url="{{ path('products_by_category', {typeName: type, categorySlug: category.slug}) }}"
+                               class="js-category">
+                                {{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-sm-10 products-wrapper">
+            {% block production %}
+                {% if page is defined and page == 'product' %}
+                    {% include '@App/product.html.twig' %}
+                {% else %}
+                    {% include '@App/products.html.twig' %}
+                {% endif %}
+            {% endblock %}
+        </div>
     </div>
 {% endblock %}
