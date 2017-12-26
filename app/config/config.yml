@@ -96,7 +96,7 @@ easy_admin:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
                    - { property: 'description', label: 'Описание' }
-                   - { property: 'imgName', label: 'Изображение', type: 'image' }
+                   - { property: 'img', label: 'Изображение', type: 'image' }
                    - { property: 'price', label: 'Цена' }
                    - { property: 'typeName', label: 'Тип'  }
             show:
@@ -105,7 +105,7 @@ easy_admin:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
                    - { property: 'description', label: 'Описание' }
-                   - { property: 'imgName', label: 'Изображение', type: 'image' }
+                   - { property: 'img', label: 'Изображение', type: 'image' }
                    - { property: 'price', label: 'Цена' }
                    - { property: 'typeName', label: 'Тип' }
             edit:
@@ -114,7 +114,7 @@ easy_admin:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
                    - { property: 'description', label: 'Описание' }
-                   - { property: 'imgName', label: 'Изображение', type: 'file' }
+                   - { property: 'img', label: 'Изображение', type: 'file' }
                    - { property: 'price', label: 'Цена' }
                    - { property: 'type', label: 'Тип',  type: 'choice', type_options: { choices: { 'Аренда': 0, 'Покупка': 1 }, required: true } }
             new:
@@ -123,7 +123,7 @@ easy_admin:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
                    - { property: 'description', label: 'Описание' }
-                   - { property: 'imgName', label: 'Изображение', type: 'file' }
+                   - { property: 'img', label: 'Изображение', type: 'file' }
                    - { property: 'price', label: 'Цена' }
                    - { property: 'type', label: 'Тип',  type: 'choice', type_options: { choices: { 'Аренда': 0, 'Покупка': 1 }, required: true } }
 

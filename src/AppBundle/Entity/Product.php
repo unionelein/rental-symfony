@@ -51,7 +51,12 @@ class Product
     /**
      * @ORM\Column(type="string", nullable=true)
      */
-    private $imgName;
+    private $imgBig;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $imgMin;
 
     /**
      * @ORM\Column(type="boolean")
@@ -141,30 +146,24 @@ class Product
     /**
      * @return mixed
      */
-    public function getImgName()
+    public function getImg()
     {
-        return $this->imgName ? new File('images/'.$this->imgName) : null;
+        return $this->imgBig ? new File('images/'.$this->imgBig) : null;
     }
 
     /**
-     * @param mixed $img
+     * @param mixed $file
      */
-    public function setImgName($img)
+    public function setImg($file)
     {
-        if (!$img) {
+        if (!$file) {
             return;
         }
 
-        if (is_string($img)) {
-            $this->imgName = $img;
-            return;
-        }
+        $imgName = AppManager::saveImg($file);
 
-        $dir = 'images/';
-        $fileName = time().rand(1, 1000);
-        $img->move($dir, $fileName);
-
-        $this->imgName = $fileName;
+        $this->imgBig = 'big-'.$imgName;
+        $this->imgMin = 'min-'.$imgName;
     }
 
     /**
@@ -212,4 +211,38 @@ class Product
             default: return 'Не определен';
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImgBig()
+    {
+        return $this->imgBig;
+    }
+
+    /**
+     * @param mixed $imgBig
+     */
+    public function setImgBig($imgBig)
+    {
+        $this->imgBig = $imgBig;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgMin()
+    {
+        return $this->imgMin;
+    }
+
+    /**
+     * @param mixed $imgMin
+     */
+    public function setImgMin($imgMin)
+    {
+        $this->imgMin = $imgMin;
+    }
+
+
 }
