@@ -46,6 +46,11 @@ class Product
     /**
      * @ORM\Column(type="string")
      */
+    private $shortDescription;
+
+    /**
+     * @ORM\Column(type="string")
+     */
     private $description;
 
     /**
@@ -244,5 +249,19 @@ class Product
         $this->imgMin = $imgMin;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
 
+    /**
+     * @param mixed $shortDescription
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
+    }
 }

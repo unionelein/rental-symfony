@@ -21,6 +21,11 @@ class AppManager
         self::POKYPKA => 1
     ];
 
+    const TYPE_NAME = [
+        0 => self::ARENDA,
+        1 => self::POKYPKA
+    ];
+
     public function __construct()
     {
     }

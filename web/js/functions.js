@@ -8,6 +8,11 @@ function handleCategoryOrProductClick(e) {
     $productsWrapper.html(loader);
     window.history.pushState("", "", url);
 
+    if ($(e.currentTarget).hasClass('js-category')) {
+        $('.js-category').removeClass('active-category');
+        $(e.currentTarget).addClass('active-category');
+    }
+
     $.ajax({
         url: url,
         type: 'POST',

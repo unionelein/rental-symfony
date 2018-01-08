@@ -15,7 +15,27 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{typeName}", name="homepage", defaults={"typeName" = null})
+     * @Route("/", name="mainpage")
+     */
+    public function mainAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $products = $em->getRepository(Product::class)->findAll();
+        $categories = $em->getRepository(Category::class)->getCategoriesByType(null);
+
+        foreach ($categories as $key => $category) {
+            $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
+        }
+
+        return $this->render('@App/main.html.twig', [
+            'products' => $products,
+            'categories' => $categories,
+            'type' => 'all'
+        ]);
+    }
+
+    /**
+     * @Route("/{typeName}", name="homepage")
      * @Method({"GET"})
      */
     public function pageAction($typeName)
@@ -31,6 +51,10 @@ class DefaultController extends Controller
         $typeName = array_search($type, AppManager::TYPE);
         $products = $em->getRepository(Product::class)->findBy(["type" => $type]);
         $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
+
+        foreach ($categories as $key => $category) {
+            $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
+        }
 
         return $this->render('@App/main.html.twig', [
             'products' => $products,
@@ -62,6 +86,10 @@ class DefaultController extends Controller
         $products = $em->getRepository(Product::class)->findProductsByCategoryAndType($categorySlug, $type);
         $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
+        foreach ($categories as $key => $category) {
+            $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
+        }
+
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
                 "products" => $this->renderView('@App/products.html.twig', [
@@ -73,6 +101,7 @@ class DefaultController extends Controller
             return $this->render('@App/main.html.twig', [
                 'products' => $products,
                 'categories' => $categories,
+                'currentCategory' => $categorySlug,
                 'type' => $typeName
             ]);
         }
@@ -102,6 +131,10 @@ class DefaultController extends Controller
             ->findProductByCategorySlugAndProductSlug($categorySlug, $productSlug);
         $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
+        foreach ($categories as $key => $category) {
+            $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
+        }
+
         if (!$product) {
             throw $this->createNotFoundException('404');
         }
@@ -118,7 +151,8 @@ class DefaultController extends Controller
                 'product' => $product,
                 'categories' => $categories,
                 'type' => $typeName,
-                'page' => 'product'
+                'page' => 'product',
+                'currentCategory' => $categorySlug
             ]);
         }
     }

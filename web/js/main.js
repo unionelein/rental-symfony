@@ -10,4 +10,10 @@ $(document).ready(function() {
     $('.js-product').click(function (e) {
         handleCategoryOrProductClick(e);
     });
+
+    $('.js-toggle-category').click(function (e) {
+        e.preventDefault();
+
+        $('.category-nav').toggle(300);
+    })
 });

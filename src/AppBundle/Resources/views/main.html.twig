@@ -1,50 +1,39 @@
 {% extends '@App/base.html.twig' %}
 
 {% block content %}
-    <p class="text-center" style="margin: 15px 0 0 0;">
-
-        <a href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::ARENDA') }) }}"
-           {% if type == constant('AppBundle\\Services\\AppManager::ARENDA') %}class="active"{% endif %}
-        >Аренда</a> |
-
-        <a href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}"
-           {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}class="active"{% endif %}
-        >Покупка</a>
-
-    </p>
-    <div class="row">
-        <div class="col-sm-2">
-            <div class="menu">
-                <p class="text-center">
-                    {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}
-                        Покупка стройматериалов
-                    {% else %}
-                        Аренда оборудования
-                    {% endif %}
-                </p>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type}) }}"
-                           class="js-category"
-                           data-url="{{ path('products_by_category', {typeName: type}) }}">ВСЕ</a></li>
-                    {% for category in categories %}
-                        <li class="list-group-item"><a href="{{ path('products_by_category', {typeName: type, categorySlug: category.slug}) }}"
-                               data-url="{{ path('products_by_category', {typeName: type, categorySlug: category.slug}) }}"
-                               class="js-category">
-                                {{ category.name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-sm-10 products-wrapper">
-            {% block production %}
-                {% if page is defined and page == 'product' %}
-                    {% include '@App/product.html.twig' %}
-                {% else %}
-                    {% include '@App/products.html.twig' %}
-                {% endif %}
-            {% endblock %}
+    <div class="text-center">
+        <div class="nav-type">
+            <a class="first {% if type == 'all' %}active-type{% endif %}" href="{{ path('mainpage') }}">ВСЕ</a>
+            <a {% if type == constant('AppBundle\\Services\\AppManager::ARENDA') %}class="active-type"{% endif %} href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::ARENDA') }) }}">Прокат</a>
+            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}">Покупка</a>
+            <div class="clear"></div>
         </div>
     </div>
+
+    <div class="menu">
+        <a href="#" class="js-toggle-category toggle-category">Категории</a>
+        <nav class="category-nav">
+            <p class="category-header">Категории</p>
+            {% for category in categories %}
+                <a href="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
+                   data-url="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
+                   class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
+                    {{ category.name }}
+                </a>
+
+            {% endfor %}
+        </nav>
+    </div>
+
+    <div class="products-wrapper">
+        {% block production %}
+            {% if page is defined and page == 'product' %}
+                {% include '@App/product.html.twig' %}
+            {% else %}
+                {% include '@App/products.html.twig' %}
+            {% endif %}
+        {% endblock %}
+    </div>
+    <div class="clear"></div>
+
 {% endblock %}

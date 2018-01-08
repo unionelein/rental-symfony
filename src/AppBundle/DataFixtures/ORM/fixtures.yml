@@ -2,6 +2,7 @@ AppBundle\Entity\Product:
     product_{1..5}:
         name: 'Гвозди <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(2, 7)>'
         category: '@category_gvozdi'
         img: 'gvozdi.jpg'
@@ -9,6 +10,7 @@ AppBundle\Entity\Product:
     product_{6..10}:
         name: 'Кирпич <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(5, 10)>'
         category: '@category_kirpich'
         img: 'kirpich.jpg'
@@ -16,6 +18,7 @@ AppBundle\Entity\Product:
     product_{11..15}:
         name: 'Цемент <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(10, 30)>'
         category: '@category_cement'
         img: 'cement.jpg'
@@ -23,6 +26,7 @@ AppBundle\Entity\Product:
     product_{16..20}:
         name: 'Перфоратор <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(10, 20)>'
         category: '@category_perforator'
         img: 'perforator.jpg'
@@ -30,6 +34,7 @@ AppBundle\Entity\Product:
     product_{21..25}:
         name: 'Бетономешалка <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(15, 40)>'
         category: '@category_betonomeshalka'
         img: 'betonomeshalka.jpg'
@@ -37,6 +42,7 @@ AppBundle\Entity\Product:
     product_{26..30}:
         name: 'Болгарка <numberBetween(1, 100)>'
         description: '<sentence()>'
+        shortDescription: '<sentence()>'
         price: '<numberBetween(3, 14)>'
         category: '@category_bolgarka'
         img: 'bolgarka.jpg'
