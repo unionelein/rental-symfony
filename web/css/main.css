@@ -308,12 +308,19 @@ footer {
     color: white;
     font-weight: bold;
     height: 100px;
-    width: 100%;
+    box-sizing: border-box;
+    width: 100%!important;
 }
 
 .footer {
-    padding: 25px 25px 0 25px;
+    padding: 25px 25px 10px 25px;
     font-size: 20px;
+    width: 100%!important;
+}
+
+.pag {
+    display: block;
+    text-align: center;
 }
 
 /** ======================= PRELOADER ===================================== */
@@ -326,14 +333,14 @@ footer {
 .cssload-container {
     width: 100%;
     height: 94px;
-    text-align: center;
 }
 
 .cssload-speeding-wheel {
+    display: inline-block;
     width: 94px;
     height: 94px;
     margin: 0 auto;
-    border: 6px solid rgb(44,62,80);
+    border: 6px solid #2980B9;
     border-radius: 50%;
     border-left-color: transparent;
     border-right-color: transparent;

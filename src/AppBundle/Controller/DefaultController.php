@@ -14,11 +14,17 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+    const COUNT_FOR_PAGE = 12;
+
     /**
-     * @Route("/", name="mainpage")
+     * @Route("/{page}", name="mainpage", defaults={"page" = 1}, requirements={"page"="\d+"})
      */
-    public function mainAction()
+    public function mainAction(Request $request, $page)
     {
+        if ($page < 1) {
+            throw $this->createNotFoundException('404');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $products = $em->getRepository(Product::class)->findAll();
         $categories = $em->getRepository(Category::class)->getCategoriesByType(null);
@@ -27,19 +33,38 @@ class DefaultController extends Controller
             $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
         }
 
-        return $this->render('@App/main.html.twig', [
-            'products' => $products,
-            'categories' => $categories,
-            'type' => 'all'
-        ]);
+        $countOfPages = ceil(count($products)/self::COUNT_FOR_PAGE);
+        $products = array_slice($products, ($page-1)*self::COUNT_FOR_PAGE, self::COUNT_FOR_PAGE);
+
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                "products" => $this->renderView('@App/products.html.twig', [
+                    'products' => $products,
+                    'type' => 'all',
+                    'countOfPages' => $countOfPages,
+                    'currentPage' => $page
+                ])
+            ]);
+        } else {
+            return $this->render('@App/main.html.twig', [
+                'products' => $products,
+                'categories' => $categories,
+                'type' => 'all',
+                'countOfPages' => $countOfPages,
+                'currentPage' => $page
+            ]);
+        }
     }
 
     /**
-     * @Route("/{typeName}", name="homepage")
-     * @Method({"GET"})
+     * @Route("/{typeName}/{page}", name="homepage", defaults={"page" = 1}, requirements={"page"="\d+"})
      */
-    public function pageAction($typeName)
+    public function pageAction(Request $request, $typeName, $page)
     {
+        if ($page < 1) {
+            throw $this->createNotFoundException('404');
+        }
+
         $type = $this->get('app_manager')->getTypeByName($typeName);
 
         if ($type === null) {
@@ -56,23 +81,43 @@ class DefaultController extends Controller
             $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
         }
 
-        return $this->render('@App/main.html.twig', [
-            'products' => $products,
-            'categories' => $categories,
-            'type' => $typeName
-        ]);
+        $countOfPages = ceil(count($products)/self::COUNT_FOR_PAGE);
+        $products = array_slice($products, ($page-1)*self::COUNT_FOR_PAGE, self::COUNT_FOR_PAGE);
+
+        if ($request->isXmlHttpRequest()) {
+            return new JsonResponse([
+                "products" => $this->renderView('@App/products.html.twig', [
+                    'products' => $products,
+                    'type' => $typeName,
+                    'countOfPages' => $countOfPages,
+                    'currentPage' => $page
+                ])
+            ]);
+        } else {
+            return $this->render('@App/main.html.twig', [
+                'products' => $products,
+                'categories' => $categories,
+                'type' => $typeName,
+                'countOfPages' => $countOfPages,
+                'currentPage' => $page
+            ]);
+        }
     }
 
     /**
-     * @Route("/{typeName}/{categorySlug}", name="products_by_category", defaults={"categorySlug" = null})
+     * @Route("/{typeName}/{categorySlug}/{page}", name="products_by_category", defaults={"categorySlug" = null, "page" = 1}, requirements={"page"="\d+"})
      *
      * @param Request $request
      * @param $typeName
      * @param $categorySlug
      * @return string
      */
-    public function getProductsByCategoryAction(Request $request, $typeName, $categorySlug)
+    public function getProductsByCategoryAction(Request $request, $typeName, $categorySlug, $page)
     {
+        if ($page < 1) {
+            throw $this->createNotFoundException('404');
+        }
+
         $type = $this->get('app_manager')->getTypeByName($typeName);
 
         if ($type === null) {
@@ -90,11 +135,16 @@ class DefaultController extends Controller
             $categories[$key]["type"] = AppManager::TYPE_NAME[$category["type"]];
         }
 
+        $countOfPages = ceil(count($products)/self::COUNT_FOR_PAGE);
+        $products = array_slice($products, ($page-1)*self::COUNT_FOR_PAGE, self::COUNT_FOR_PAGE);
+
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
                 "products" => $this->renderView('@App/products.html.twig', [
                     'products' => $products,
-                    'type' => $typeName
+                    'type' => $typeName,
+                    'countOfPages' => $countOfPages,
+                    'currentPage' => $page
                 ])
             ]);
         } else {
@@ -102,7 +152,9 @@ class DefaultController extends Controller
                 'products' => $products,
                 'categories' => $categories,
                 'currentCategory' => $categorySlug,
-                'type' => $typeName
+                'type' => $typeName,
+                'countOfPages' => $countOfPages,
+                'currentPage' => $page
             ]);
         }
     }

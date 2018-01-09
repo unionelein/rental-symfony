@@ -11,7 +11,22 @@
         <span class="price">{{ product.price }}$</span>
     </a>
 {% else %}
-    <p class="text-info text-center">Похоже, в этой категории еще ничего нет :(</p>
+    <p class="text-info" style="margin: 40px 0 0 30%;">Похоже, что здесь ничего нет :(</p>
 {% endfor %}
 
-
+{% if countOfPages > 1  and currentPage <= countOfPages %}
+    <div class="clear"></div>
+    <div class="pag">
+        <ul class="pagination">
+        {% for i in 1..countOfPages %}
+            {% set params = (app.request.attributes.get('_route_params') | merge({'page': i})) %}
+            <li class="{% if i == currentPage %}active{% endif %}">
+                <a class="js-page"
+                   href="{{ path(app.request.attributes.get('_route'), params) }}"
+                   data-url="{{ path(app.request.attributes.get('_route'), params) }}"
+                >{{ i }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endif %}

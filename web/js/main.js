@@ -11,6 +11,10 @@ $(document).ready(function() {
         handleCategoryOrProductClick(e);
     });
 
+    $('.js-page').click(function (e) {
+        handleCategoryOrProductClick(e);
+    });
+
     $('.js-toggle-category').click(function (e) {
         e.preventDefault();
 
