@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width">
     <title>{% block title %}Алькор{% endblock %}</title>
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -20,10 +20,10 @@
     <header>
         <div class="row wrapper">
 
-            <div class="col-lg-3 col-md-2 col-sm-6 col-xs-5">
-                <div class="logo">
+            <div class="col-lg-3 col-md-2 col-sm-5 col-xs-5">
+                <a href="/" class="logo">
                     <img src="{{ asset('images/logo.svg') }}" alt="Алькор">
-                </div>
+                </a>
             </div>
 
             <div class="about col-md-6 hidden-sm hidden-xs">
@@ -31,7 +31,7 @@
                 <h2><i class="fa fa-inbox" aria-hidden="true"></i> Продажа стройматериалов</h2>
             </div>
 
-            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-7">
+            <div class="col-lg-3 col-md-4 col-sm-7 col-xs-7">
                 <div class="contacts">
                     Наши контакты:<br>
                     <i class="fa fa-map-marker" aria-hidden="true"></i> Гомель, ул. Гагарина, д.20<br>
@@ -59,14 +59,14 @@
     <footer>
         <div class="wrapper">
             <div class="row footer">
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-5 col-xs-5">
                     ОДО "Алькор"<br>
-                    Все права защищены &copy; 2018
+                    &copy; 2018
                 </div>
                 <div class="col-md-4 hidden-sm hidden-xs">
                     Продажа стройматериалов и прокат инструмента
                 </div>
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-7 col-xs-7">
                     <i class="fa fa-map-marker" aria-hidden="true"></i> Гомель, ул. Гагарина, д.20<br>
                     <i class="fa fa-mobile" aria-hidden="true"></i> +375299365114
                 </div>

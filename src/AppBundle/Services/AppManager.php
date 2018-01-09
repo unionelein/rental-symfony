@@ -64,7 +64,7 @@ class AppManager
         $img->quality_jpg = 90;
         $img->resizeToBestFit(500, 625);
         $img->save($dir.'big-'.$imgName);
-        $img->resizeToBestFit(220, 150);
+        $img->resizeToBestFit(200, 150);
         $img->save($dir.'min-'.$imgName);
 
         return $imgName;

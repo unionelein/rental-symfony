@@ -12,12 +12,24 @@ $(document).ready(function() {
     });
 
     $('.js-page').click(function (e) {
+        window.scrollTo(0, 80);
         handleCategoryOrProductClick(e);
     });
 
     $('.js-toggle-category').click(function (e) {
         e.preventDefault();
 
-        $('.category-nav').toggle(300);
-    })
+        $('.category-nav').toggle(200);
+    });
+
+    $(document).mouseup(function (e) {
+        if ($(e.target).hasClass('js-toggle-category')) {
+            return;
+        }
+
+        var container = $('.category-nav');
+        if (container.has(e.target).length === 0){
+            container.hide(200);
+        }
+    });
 });
