@@ -1,15 +1,14 @@
 <div class="row product">
-    <div class="col-sm-7 ">
-        <img src="/images/{{ product.imgBig }}" alt="perforator">
+    <div class="col-md-6 text-center">
+        <img src="/images/{{ product.imgBig }}" alt="{{ product.name }}">
     </div>
 
-    <div class="col-sm-5">
-        <h2>{{ product.name }}</h2>
-        <h4>{{ product.description }}</h4>
-        <h4 style="color: orange;">Заказать вы можете по номеру:</h4>
-        <h3 style="color: red;">+375299365114</h3>
-        <span class="price">{{ product.price }}$</span>
+    <div class="col-md-6 product-info">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <h4 class="description">{{ product.description|nl2br }}</h4>
+        <p style="color: orange;">Заказать вы можете по номеру:</p>
+        <p style="color: red;">+375299365114</p>
+        <span class="price">{{ product.price }} BYN</span>
     </div>
-    <div class="col-sm-2"></div>
 </div>
 

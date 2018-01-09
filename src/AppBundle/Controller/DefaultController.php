@@ -26,7 +26,7 @@ class DefaultController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $products = $em->getRepository(Product::class)->findAll();
+        $products = $em->getRepository(Product::class)->findAllProducts();
         $categories = $em->getRepository(Category::class)->getCategoriesByType(null);
 
         foreach ($categories as $key => $category) {
@@ -74,7 +74,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $typeName = array_search($type, AppManager::TYPE);
-        $products = $em->getRepository(Product::class)->findBy(["type" => $type]);
+        $products = $em->getRepository(Product::class)->findAllProducts($type);
         $categories = $em->getRepository(Category::class)->getCategoriesByType($type);
 
         foreach ($categories as $key => $category) {

@@ -22,7 +22,11 @@ class Product
     private $id;
 
     /**
-     * @ORM\Column(type="string", nullable=false)
+     * @ORM\Column(type="string", length=22, nullable=false)
+     * @Assert\Length(
+     *      max = 22,
+     *      maxMessage = "Название должно быть не больше 22 символов"
+     * )
      */
     private $name;
 
@@ -39,17 +43,25 @@ class Product
     private $category;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
+     * @Assert\Range(
+     *      max = 100000,
+     *      maxMessage = "Максимальная цена - 100000"
+     * )
      */
     private $price;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=70)
+     * @Assert\Length(
+     *      max = 70,
+     *      maxMessage = "Короткое описание должно быть не больше 70 символов"
+     * )
      */
     private $shortDescription;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $description;
 

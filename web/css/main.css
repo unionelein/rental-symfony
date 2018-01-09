@@ -1,7 +1,7 @@
 body {
     font-family: 'Rubik', Verdana sans-serif;
     font-size: 16px;
-    line-height: 1.7em;
+    line-height: 1.5em;
     min-width: 660px;
     min-height: 100vh;
     position: relative;
@@ -215,6 +215,10 @@ header {
     color: white!important;
 }
 
+.category i {
+    margin-right: 10px;
+}
+
 .toggle-category {
     text-align: center;
     background-color: #2980B9;
@@ -224,6 +228,10 @@ header {
     display: block;
     color: white;
     text-decoration: none;
+}
+
+.toggle-category i {
+    margin-right: 10px;
 }
 
 .toggle-category:focus, .toggle-category:visited, .toggle-category:link {
@@ -265,6 +273,7 @@ header {
 }
 
 .product-wrapper {
+    position: relative;
     display: block;
     float:left;
     width: 260px;
@@ -285,12 +294,34 @@ header {
     color: #343434;
 }
 
-.product-wrapper .description {
-    height: 60px;
+.product-wrapper .short-description {
+    height: 70px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.4em;
 }
 
 .product-wrapper .name {
     height: 66px;
+    font-size: 24px;
+}
+
+.product-wrapper .type {
+    position: absolute;
+    top: 13px;
+    right: 17px;
+    color: white;
+    font: 13px 'Philosopher';
+    padding: 3px 6px;
+    border-radius: 5px;
+}
+
+.product-wrapper .green {
+    background-color: #2ECC71;
+}
+
+.product-wrapper .red {
+    background-color: #E74C3C;
 }
 
 .main-content {
@@ -313,10 +344,30 @@ header {
     border-bottom: 1px solid #ECF0F1;
 }
 
+@media only screen and (max-width: 1235px) {
+    .product {
+        margin: 10px 15px;
+    }
+}
+
+.product-info {
+    text-align: left;
+}
+
+@media only screen and (max-width: 1235px) {
+    .product-info {
+        text-align: center;
+    }
+}
+
 .product img {
-    border-radius: 3px;
-    padding: 35px;
-    box-shadow: #ECF0F1 0 0 5px 1px;
+    padding: 15px;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.product .description {
+    line-height: 1.4em;
 }
 
 .loader {

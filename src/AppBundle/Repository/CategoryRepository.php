@@ -8,18 +8,6 @@ use Doctrine\ORM\EntityRepository;
 class CategoryRepository extends EntityRepository
 {
     /**
-     * @return Category[]
-     */
-    public function findCategoriesContainsProducts()
-    {
-        return $this->createQueryBuilder('category')
-            ->select('category')
-            ->innerJoin('category.products', 'product')
-            ->getQuery()
-            ->getResult();
-    }
-
-    /**
      * @param  $type
      * @return Category[]
      */
@@ -27,7 +15,8 @@ class CategoryRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('category')
             ->select('category.slug, category.name, product.type as type')
-            ->innerJoin('category.products', 'product');
+            ->innerJoin('category.products', 'product')
+            ->orderBy('category.name','ASC');
 
         if ($type !== null) {
             $qb = $qb->andWhere('product.type = :type')

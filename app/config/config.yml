@@ -95,6 +95,7 @@ easy_admin:
                    - 'id'
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
+                   - { property: 'shortDescription', label: 'Короткое описание' }
                    - { property: 'description', label: 'Описание' }
                    - { property: 'img', label: 'Изображение', type: 'image' }
                    - { property: 'price', label: 'Цена' }
@@ -104,6 +105,7 @@ easy_admin:
                 fields:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
+                   - { property: 'shortDescription', label: 'Короткое описание' }
                    - { property: 'description', label: 'Описание' }
                    - { property: 'img', label: 'Изображение', type: 'image' }
                    - { property: 'price', label: 'Цена' }
@@ -113,6 +115,7 @@ easy_admin:
                 fields:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
+                   - { property: 'shortDescription', label: 'Короткое описание' }
                    - { property: 'description', label: 'Описание' }
                    - { property: 'img', label: 'Изображение', type: 'file' }
                    - { property: 'price', label: 'Цена' }
@@ -122,6 +125,7 @@ easy_admin:
                 fields:
                    - { property: 'name', label: 'Название' }
                    - { property: 'category', label: 'Категория' }
+                   - { property: 'shortDescription', label: 'Короткое описание' }
                    - { property: 'description', label: 'Описание' }
                    - { property: 'img', label: 'Изображение', type: 'file' }
                    - { property: 'price', label: 'Цена' }

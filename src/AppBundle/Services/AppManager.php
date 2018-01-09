@@ -62,7 +62,7 @@ class AppManager
         $imgName = 'img'.time().rand(1, 1000).$type;
 
         $img->quality_jpg = 90;
-        $img->resizeToBestFit(500, 625);
+        $img->resizeToBestFit(450, 550);
         $img->save($dir.'big-'.$imgName);
         $img->resizeToBestFit(200, 150);
         $img->save($dir.'min-'.$imgName);

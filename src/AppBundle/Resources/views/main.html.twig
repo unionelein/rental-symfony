@@ -12,13 +12,17 @@
 
     <div class="menu-wrapper">
         <div class="menu">
-            <a href="#" class="js-toggle-category toggle-category">Категории</a>
+            <a href="#" class="js-toggle-category toggle-category">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+                Категории
+            </a>
             <nav class="category-nav">
                 <p class="category-header">Категории</p>
                 {% for category in categories %}
                     <a href="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
                        data-url="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
                        class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         {{ category.name }}
                     </a>
 

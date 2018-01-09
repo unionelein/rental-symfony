@@ -16,7 +16,8 @@ class ProductRepository extends EntityRepository
         $qb = $this->createQueryBuilder('product')
             ->select('product')
             ->andWhere('product.type = :type')
-            ->setParameter('type', $type);
+            ->setParameter('type', $type)
+            ->orderBy('product.id', 'DESC');
 
         if ($categorySlug) {
             $qb->leftJoin('product.category', 'category')
@@ -44,5 +45,24 @@ class ProductRepository extends EntityRepository
             ->getQuery()
             ->setMaxResults(1)
             ->getOneOrNullResult();
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function findAllProducts($type = null)
+    {
+        $qb = $this->createQueryBuilder('product')
+            ->select('product');
+
+        if ($type !== null) {
+            $qb->andWhere('product.type = :type')
+                ->setParameter('type', $type);
+        }
+
+        return $qb
+            ->orderBy('product.id', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 }
