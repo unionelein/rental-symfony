@@ -1,5 +1,5 @@
 body {
-    font-family: 'Rubik', Verdana sans-serif;
+    font-family: 'Roboto', Verdana sans-serif;
     font-size: 16px;
     line-height: 1.5em;
     min-width: 660px;
@@ -10,7 +10,7 @@ body {
 }
 
 header {
-    font-family: 'Philosopher', Verdana sans-serif;
+    font-family: 'Roboto', Verdana sans-serif;
     background-color: #ffce13;
     color: white;
     font-weight: bold;
@@ -105,8 +105,8 @@ header {
     text-align: center;
     padding: 0;
     margin: 30px auto 0 auto;
+    font: 18px 'Roboto';
     font-weight: bold;
-    font-size: 18px;
 }
 
 .nav-type a {
@@ -149,7 +149,7 @@ header {
 
 .category-nav {
 
-    font: 20px 'Philosopher';
+    font: 20px 'Roboto';
     text-align: left;
     border: 1px solid #ECF0F1;
     border-radius: 5px;
@@ -165,6 +165,9 @@ header {
 @media only screen and (min-width: 1235px) {
     .category-nav {
         display: block!important;
+        width: 100%!important;
+        height: 100%!important;
+        opacity: 1!important;
     }
 }
 
@@ -299,6 +302,9 @@ header {
     margin-bottom: 10px;
     font-size: 16px;
     line-height: 1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Roboto Slab';
 }
 
 .product-wrapper .name {
@@ -306,22 +312,33 @@ header {
     font-size: 24px;
 }
 
-.product-wrapper .type {
+.type {
     position: absolute;
     top: 13px;
     right: 17px;
     color: white;
-    font: 13px 'Philosopher';
+    font: 13px 'Roboto';
     padding: 3px 6px;
     border-radius: 5px;
 }
 
-.product-wrapper .green {
+.green {
     background-color: #2ECC71;
 }
 
-.product-wrapper .red {
+.red {
     background-color: #E74C3C;
+}
+
+.price .number {
+    color: #343434;
+    font-size:22px;
+}
+
+.price {
+    color: #343434;
+    font-size:18px;
+    font-weight:bold;
 }
 
 .main-content {
@@ -344,18 +361,31 @@ header {
     border-bottom: 1px solid #ECF0F1;
 }
 
+.product .img-wrapper {
+    position: relative;
+}
+
+.product .type {
+    top: -10px;
+    right: 50px;
+}
+
+.product-name {
+    margin-bottom: 30px;
+}
+
 @media only screen and (max-width: 1235px) {
     .product {
         margin: 10px 15px;
     }
 }
 
-.product-info {
-    text-align: left;
-}
-
 @media only screen and (max-width: 1235px) {
     .product-info {
+        margin: 0 8%;
+    }
+
+    .product-name {
         text-align: center;
     }
 }
@@ -367,6 +397,7 @@ header {
 }
 
 .product .description {
+    font-family:'Roboto Slab';
     line-height: 1.4em;
 }
 
@@ -391,8 +422,8 @@ header {
 footer {
     position: absolute;
     bottom: 0;
-    font-family: 'Philosopher', Verdana sans-serif;
-    background-color: #ffce13;
+    font-family: 'Roboto', Verdana sans-serif;
+    background-color: #FFC813;
     color: white;
     font-weight: bold;
     height: 100px;
@@ -403,13 +434,27 @@ footer {
 
 .footer {
     padding: 25px 25px 10px 25px;
-    font-size: 20px;
+    font-size: 18px;
     width: 100%!important;
+}
+
+.footer h1 {
+    font-weight:bold;
+    font-size: 18px;
+    margin: 0;
+}
+
+.footer .company {
+    padding-left: 10%;
 }
 
 .pag {
     display: block;
     text-align: center;
+}
+
+.right {
+    float: right;
 }
 
 /** ======================= PRELOADER ===================================== */

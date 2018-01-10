@@ -52,10 +52,10 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=70)
+     * @ORM\Column(type="string", length=120)
      * @Assert\Length(
-     *      max = 70,
-     *      maxMessage = "Короткое описание должно быть не больше 70 символов"
+     *      max = 120,
+     *      maxMessage = "Короткое описание должно быть не больше 120 символов"
      * )
      */
     private $shortDescription;

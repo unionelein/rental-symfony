@@ -9,7 +9,7 @@
             <img src="/images/{{ product.imgMin }}" alt="{{ product.name }}">
         </div>
         <h3 class="short-description">{{ product.shortDescription }}</h3>
-        <span class="price">{{ product.price }} BYN</span>
+        <span class="price"><span class="number">{{ product.price }}</span> руб{% if type_name == "arenda" %}/сутки{% endif %}</span>
     </a>
 {% else %}
     <p class="text-info" style="margin: 40px 0 0 30%;">Похоже, что здесь ничего нет :(</p>

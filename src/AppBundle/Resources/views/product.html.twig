@@ -1,14 +1,15 @@
 <div class="row product">
-    <div class="col-md-6 text-center">
+    <div class="col-md-6 text-center img-wrapper">
         <img src="/images/{{ product.imgBig }}" alt="{{ product.name }}">
+        <span class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Аренда" }}</span>
     </div>
 
     <div class="col-md-6 product-info">
         <h2 class="product-name">{{ product.name }}</h2>
         <h4 class="description">{{ product.description|nl2br }}</h4>
-        <p style="color: orange;">Заказать вы можете по номеру:</p>
-        <p style="color: red;">+375299365114</p>
-        <span class="price">{{ product.price }} BYN</span>
+        <span class="price"><span class="number">{{ product.price }}</span> руб{% if product.type == 0 %}/сутки{% endif %}</span>
+        <p style="color: orange;font-weight: bold; padding-top: 20px;">Заказать или уточнить информацию вы можете по номеру</p>
+        <p style="color: red;font-weight: bold;font-size: 20px;">+375299365114</p>
     </div>
 </div>
 
