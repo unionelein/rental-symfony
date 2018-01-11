@@ -19,8 +19,10 @@
             <nav class="category-nav">
                 <p class="category-header">Категории</p>
                 {% for category in categories %}
-                    <a href="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
-                       data-url="{{ path('products_by_category', {typeName: category.type, categorySlug: category.slug}) }}"
+                    {% set params = type == 'all' ? { categorySlug: category.slug } : {typeName: category.type, categorySlug: category.slug} %}
+                    {% set route = type == 'all' ? 'products_by_category' : 'products_by_category_and_type' %}
+                    <a href="{{ path(route, params) }}"
+                       data-url="{{ path(route, params) }}"
                        class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         {{ category.name }}

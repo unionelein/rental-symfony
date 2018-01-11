@@ -13,17 +13,22 @@ class CategoryRepository extends EntityRepository
      */
     public function getCategoriesByType($type)
     {
-        $qb = $this->createQueryBuilder('category')
+        return $this->createQueryBuilder('category')
             ->select('category.slug, category.name, product.type as type')
             ->innerJoin('category.products', 'product')
-            ->orderBy('category.name','ASC');
+            ->orderBy('category.name','ASC')
+            ->andWhere('product.type = :type')
+            ->setParameter('type', $type)
+            ->groupBy('category.slug, category.name, type')
+            ->getQuery()
+            ->getResult();
+    }
 
-        if ($type !== null) {
-            $qb = $qb->andWhere('product.type = :type')
-                ->setParameter('type', $type);
-        }
-
-        return  $qb->groupBy('category.slug, category.name, type')
+    public function getCategories()
+    {
+        return $this->createQueryBuilder('category')
+            ->select('category.slug, category.name')
+            ->orderBy('category.name','ASC')
             ->getQuery()
             ->getResult();
     }

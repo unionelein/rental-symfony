@@ -11,13 +11,16 @@ class ProductRepository extends EntityRepository
      * @param $categorySlug
      * @return Product[]
      */
-    public function findProductsByCategoryAndType($categorySlug, $type)
+    public function findProductsByCategoryAndType($categorySlug, $type = null)
     {
         $qb = $this->createQueryBuilder('product')
             ->select('product')
-            ->andWhere('product.type = :type')
-            ->setParameter('type', $type)
             ->orderBy('product.id', 'DESC');
+
+        if ($type !== null) {
+            $qb = $qb->andWhere('product.type = :type')
+                ->setParameter('type', $type);
+        }
 
         if ($categorySlug) {
             $qb->leftJoin('product.category', 'category')
