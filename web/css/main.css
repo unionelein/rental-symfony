@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', Verdana sans-serif;
     font-size: 16px;
     line-height: 1.5em;
-    min-width: 660px;
+    min-width: 320px;
     min-height: 100vh;
     position: relative;
     padding-bottom: 115px;
@@ -37,7 +37,13 @@ header {
 
 @media only screen and (max-width: 960px) {
     .wrapper {
-        max-width: 600px;
+        max-width: 660px;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .wrapper {
+        max-width: 320px;
     }
 }
 
@@ -68,6 +74,16 @@ header {
     margin: 0 8px;
 }
 
+@media only screen and (max-width: 660px) {
+    .logo-wrapper, .contacts-wrapper {
+        width: 100%;
+    }
+
+    .contacts {
+        margin: 10px 0 15px 0;
+    }
+}
+
 /* ================================================ CONTENT ================================== */
 
 .menu-wrapper {
@@ -96,6 +112,12 @@ header {
     }
 }
 
+@media only screen and (max-width: 960px) {
+    .menu-wrapper {
+        width: 300px;
+    }
+}
+
 .clear {
     clear: both;
 }
@@ -119,6 +141,12 @@ header {
     padding: 10px 13px;
     transition: all 0.1s ease;
     text-decoration: none;
+}
+
+@media only screen and (max-width: 660px) {
+    .nav-type a {
+        width: 100px;
+    }
 }
 
 .nav-type .first{
@@ -271,7 +299,15 @@ header {
 
 @media only screen and (max-width: 960px) {
     .products-wrapper {
+        float: none;
+        margin:auto;
         width: 600px;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .products-wrapper {
+        width: 320px;
     }
 }
 
@@ -371,12 +407,24 @@ header {
 }
 
 .product-name {
-    margin-bottom: 30px;
+    margin: 0 0 30px 0;
 }
 
 @media only screen and (max-width: 1235px) {
     .product {
         margin: 10px 15px;
+    }
+}
+
+@media only screen and (max-width: 660px) {
+    .product {
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .product-info, .img-wrapper {
+        margin: 0!important;
+        padding: 0!important;
     }
 }
 
@@ -399,6 +447,7 @@ header {
 .product .description {
     font-family:'Roboto Slab';
     line-height: 1.4em;
+    margin-bottom: 20px;
 }
 
 .loader {
@@ -455,6 +504,29 @@ footer {
 
 .right {
     float: right;
+}
+
+@media only screen and (max-width: 660px) {
+    .company-wrapper, .footer-contacts-wrapper {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .company {
+        padding-left: 0!important;
+    }
+
+    footer {
+        height: 125px;
+    }
+
+    .footer-br-copy {
+        display: none;
+    }
+
+    body {
+        padding-bottom: 140px;
+    }
 }
 
 /** ======================= PRELOADER ===================================== */
