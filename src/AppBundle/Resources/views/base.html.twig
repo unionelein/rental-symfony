@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>{% block title %}Алькор{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}Алькор: прокат инструмента и продажа стройматериалов в Гомеле {% endblock %}</title>
+    <meta name="description" content="Прокат инструмента и продажа стройматериалов в Гомеле">
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('fonts/fontawesome/css/font-awesome.min.css') }}">
@@ -21,22 +21,22 @@
 
             <div class="col-lg-3 col-md-2 col-sm-5 col-xs-5 logo-wrapper">
                 <div class="logo">
-                    <a href="{{ path('mainpage') }}">
+                    <a href="{{ path('mainpage') }}" title="Алькор">
                         <img src="{{ asset('images/logo.svg') }}" alt="Алькор">
                     </a>
                 </div>
             </div>
 
             <div class="about col-md-6 hidden-sm hidden-xs">
-                <h2><i class="fa fa-handshake-o" aria-hidden="true"></i> Прокат инструмента </h2>
-                <h2><i class="fa fa-inbox" aria-hidden="true"></i> Продажа стройматериалов</h2>
+                <h1><i class="fa fa-handshake-o" aria-hidden="true"></i> Прокат инструмента в Гомеле</h1>
+                <h1><i class="fa fa-inbox" aria-hidden="true"></i> Продажа стройматериалов</h1>
             </div>
 
             <div class="col-lg-3 col-md-4 col-sm-7 col-xs-7 contacts-wrapper">
                 <div class="contacts">
                     Наши контакты:<br>
                     <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="address">Гомель, ул. Гагарина, д.20</span><br>
-                    <i class="fa fa-mobile" aria-hidden="true"></i> +375299365114
+                    <a href="tel:+375299365114" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i> +375299365114</a>
                 </div>
             </div>
 
@@ -62,17 +62,17 @@
             <div class="row footer">
                 <div class="col-md-4 col-sm-5 col-xs-5 company-wrapper">
                     <div class="company">
-                        <h1>ОДО "Алькор"<br class="footer-br-copy"> &copy; 2018</h1>
+                        <h2>ОДО "Алькор" </h2> &copy; 2018
 
                     </div>
                 </div>
-                <div class="col-md-4 hidden-sm hidden-xs">
-                    Продажа стройматериалов и прокат инструмента
-                </div>
+                <h1 class="col-md-4 hidden-sm hidden-xs text-center activity">
+                    Прокат инструмента и продажа строительных материалов в Гомеле
+                </h1>
                 <div class="col-md-4 col-sm-7 col-xs-7 footer-contacts-wrapper">
                     <div class="right">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i> Гомель, ул. Гагарина, д.20<br>
-                        <i class="fa fa-mobile" aria-hidden="true"></i> +375299365114
+                        <i class="fa fa-map-marker" aria-hidden="true"></i> <span class="address">Гомель, ул. Гагарина, д.20</span><br>
+                        <a href="tel:" title="Позвонить нам" class="phone"><i class="fa fa-mobile" aria-hidden="true"></i> +375299365114</a>
                     </div>
                     <div class="clear"></div>
                 </div>

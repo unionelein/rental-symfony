@@ -3,16 +3,16 @@
 {% block content %}
     <div class="text-center">
         <div class="nav-type">
-            <a class="first {% if type == 'all' %}active-type{% endif %}" href="{{ path('mainpage') }}">ВСЕ</a>
-            <a {% if type == constant('AppBundle\\Services\\AppManager::ARENDA') %}class="active-type"{% endif %} href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::ARENDA') }) }}">Прокат</a>
-            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}">Покупка</a>
+            <a class="first {% if type == 'all' %}active-type{% endif %}" title="Весь ассортимент" href="{{ path('mainpage') }}">ВСЕ</a>
+            <a {% if type == constant('AppBundle\\Services\\AppManager::PROKAT') %}class="active-type"{% endif %} title="Прокат инструмента" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::PROKAT') }) }}">Прокат</a>
+            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" title="Покупка стройматериалов" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}">Покупка</a>
             <div class="clear"></div>
         </div>
     </div>
 
     <div class="menu-wrapper">
         <div class="menu">
-            <a href="#" class="js-toggle-category toggle-category">
+            <a href="#" class="js-toggle-category toggle-category" title="Показать категории">
                 <i class="fa fa-bars" aria-hidden="true"></i>
                 Категории
             </a>
@@ -22,6 +22,7 @@
                     {% set params = type == 'all' ? { categorySlug: category.slug } : {typeName: category.type, categorySlug: category.slug} %}
                     {% set route = type == 'all' ? 'products_by_category' : 'products_by_category_and_type' %}
                     <a href="{{ path(route, params) }}"
+                       title="{{ category.name }}"
                        data-url="{{ path(route, params) }}"
                        class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>

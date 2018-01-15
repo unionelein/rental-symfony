@@ -28,7 +28,7 @@ $(document).ready(function() {
         }
 
         var container = $('.category-nav');
-        if (container.has(e.target).length === 0){
+        if (container.has(e.target).length === 0 || $(e.target).hasClass('js-category')){
             container.hide(200);
         }
     });

@@ -13,16 +13,16 @@ use Eventviva\ImageResize;
 
 class AppManager
 {
-    const ARENDA = "arenda";
+    const PROKAT = "prokat";
     const POKYPKA = "pokypka";
 
     const TYPE = [
-        self::ARENDA => 0,
+        self::PROKAT => 0,
         self::POKYPKA => 1
     ];
 
     const TYPE_NAME = [
-        0 => self::ARENDA,
+        0 => self::PROKAT,
         1 => self::POKYPKA
     ];
 
@@ -33,8 +33,8 @@ class AppManager
     public function getTypeByName($name)
     {
         switch ($name) {
-            case "arenda": case null:
-                return self::TYPE["arenda"];
+            case "prokat": case null:
+                return self::TYPE["prokat"];
             case "pokypka":
                 return self::TYPE["pokypka"];
             default:

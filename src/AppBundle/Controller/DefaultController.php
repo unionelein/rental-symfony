@@ -53,7 +53,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/{typeName}/{page}", name="homepage", defaults={"page" = 1}, requirements={"page"="\d+","typeName"="(arenda|pokypka)"})
+     * @Route("/{typeName}/{page}", name="homepage", defaults={"page" = 1}, requirements={"page"="\d+","typeName"="(prokat|pokypka)"})
      */
     public function pageAction(Request $request, $typeName, $page)
     {
@@ -143,7 +143,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("{typeName}/{categorySlug}/{page}", name="products_by_category_and_type", defaults={"categorySlug" = null, "page" = 1}, requirements={"page"="\d+","typeName"="(arenda|pokypka)"})
+     * @Route("{typeName}/{categorySlug}/{page}", name="products_by_category_and_type", defaults={"categorySlug" = null, "page" = 1}, requirements={"page"="\d+","typeName"="(prokat|pokypka)"})
      *
      * @param Request $request
      * @param $categorySlug

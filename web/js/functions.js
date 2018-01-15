@@ -1,6 +1,8 @@
 function handleCategoryOrProductClick(e) {
     e.preventDefault();
 
+    window.scrollTo(0, 80);
+
     var $productsWrapper = $('.products-wrapper');
     var loader = $('.js-loader-wrapper').html();
     var url = $(e.currentTarget).data('url');
@@ -25,7 +27,6 @@ function handleCategoryOrProductClick(e) {
         });
 
         $('.js-page').click(function (e) {
-            window.scrollTo(0, 80);
             handleCategoryOrProductClick(e);
         });
     });

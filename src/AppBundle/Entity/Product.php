@@ -224,7 +224,7 @@ class Product
     {
         switch ($this->type) {
             case AppManager::TYPE[AppManager::POKYPKA]: return 'Покупка';
-            case AppManager::TYPE[AppManager::ARENDA]:  return 'Аренда';
+            case AppManager::TYPE[AppManager::PROKAT]:  return 'Аренда';
             default: return 'Не определен';
         }
     }

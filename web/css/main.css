@@ -64,6 +64,10 @@ header {
     text-align: center;
 }
 
+.about h1 {
+    font-size: 30px;
+}
+
 .contacts {
     font-size: 18px;
     margin: 15px 0;
@@ -83,6 +87,15 @@ header {
         margin: 10px 0 15px 0;
     }
 }
+
+.phone, .phone:hover, .phone:active, .phone:focus, .phone:visited {
+    color: white;
+}
+
+.phone:hover {
+    color: white;
+}
+
 
 /* ================================================ CONTENT ================================== */
 
@@ -135,8 +148,8 @@ header {
     display: block;
     float: left;
     width: 110px;
-    border-top: 1px solid #ffce13;
-    border-bottom: 1px solid #ffce13;
+    border-top: 1px solid #2980B9;
+    border-bottom: 1px solid #2980B9;
     color: #2C3E50!important;
     padding: 10px 13px;
     transition: all 0.1s ease;
@@ -150,19 +163,19 @@ header {
 }
 
 .nav-type .first{
-    border: 1px solid #ffce13;
+    border: 1px solid #2980B9;
     border-bottom-left-radius: 23px;
     border-top-left-radius: 23px;
 }
 
 .nav-type .last{
-    border: 1px solid #ffce13;
+    border: 1px solid #2980B9;
     border-bottom-right-radius: 23px;
     border-top-right-radius: 23px;
 }
 
 .nav-type .active-type {
-    background-color: #ffce13;
+    background-color: #2980B9;
 }
 
 .nav-type .active-type, .nav-type a:hover{
@@ -171,7 +184,7 @@ header {
 }
 
 .nav-type a:hover {
-    background-color: #ffce13;
+    background-color: #2980B9;
     transform: scale(1.07);
 }
 
@@ -356,6 +369,7 @@ header {
     font: 13px 'Roboto';
     padding: 3px 6px;
     border-radius: 5px;
+    margin: 0;
 }
 
 .green {
@@ -487,14 +501,24 @@ footer {
     width: 100%!important;
 }
 
-.footer h1 {
+.footer h1, .footer h2 {
     font-weight:bold;
     font-size: 18px;
     margin: 0;
 }
 
+footer .activity {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
 .footer .company {
     padding-left: 10%;
+}
+
+.footer .company h2 {
+    display: block;
+    line-height:1.3em!important;
 }
 
 .pag {
@@ -520,8 +544,8 @@ footer {
         height: 125px;
     }
 
-    .footer-br-copy {
-        display: none;
+    .footer .company h2 {
+        display: inline-block;
     }
 
     body {
