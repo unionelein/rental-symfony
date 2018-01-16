@@ -155,3 +155,27 @@ easy_admin:
                 fields:
                    - { property: 'name', label: 'Название' }
                    - { property: 'products', label: 'Продукция', type_options: { by_reference: false } }
+
+        AppConfig:
+            class: AppBundle\Entity\AppConfig
+            label: 'Настройки'
+            list:
+                title: 'Настройки'
+                fields:
+                   - { property: 'name', label: 'Имя' }
+                   - { property: 'value', label: 'Значение' }
+            show:
+                title: 'Настройки'
+                fields:
+                   - { property: 'name', label: 'Имя' }
+                   - { property: 'value', label: 'Значение' }
+            edit:
+                title: 'Настройки'
+                fields:
+                   - { property: 'name', label: 'Имя' }
+                   - { property: 'value', label: 'Значение' }
+            new:
+                title: 'Настройки'
+                fields:
+                   - { property: 'name', label: 'Имя' }
+                   - { property: 'value', label: 'Значение' }

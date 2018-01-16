@@ -12,12 +12,12 @@
 
     <div class="menu-wrapper">
         <div class="menu">
-            <a href="#" class="js-toggle-category toggle-category" title="Показать категории">
+            <a href="#" class="js-toggle-category toggle-category gradient1" title="Показать категории">
                 <i class="fa fa-bars" aria-hidden="true"></i>
                 Категории
             </a>
             <nav class="category-nav">
-                <p class="category-header">Категории</p>
+                <p class="category-header gradient1">Категории</p>
                 {% for category in categories %}
                     {% set params = type == 'all' ? { categorySlug: category.slug } : {typeName: category.type, categorySlug: category.slug} %}
                     {% set route = type == 'all' ? 'products_by_category' : 'products_by_category_and_type' %}

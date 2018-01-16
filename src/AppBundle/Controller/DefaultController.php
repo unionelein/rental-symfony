@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\AppConfig;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Category;
 use AppBundle\Services\AppManager;
@@ -216,11 +217,16 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('404');
         }
 
+        $deliveryPrice = $em->getRepository(AppConfig::class)->findOneBy([
+            "name" => AppConfig::DELIVERY_PRICE
+        ])->getValue()? : 0;
+
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([
                 "products" => $this->renderView('@App/product.html.twig', [
                     'product' => $product,
-                    'type' => 'all'
+                    'type' => 'all',
+                    'deliveryPrice' => $deliveryPrice
                 ])
             ]);
         } else {
@@ -229,7 +235,8 @@ class DefaultController extends Controller
                 'categories' => $categories,
                 'type' => 'all',
                 'page' => 'product',
-                'currentCategory' => $categorySlug
+                'currentCategory' => $categorySlug,
+                'deliveryPrice' => $deliveryPrice
             ]);
         }
     }
