@@ -44,6 +44,7 @@ class AppManager
 
     static public function saveImg($file)
     {
+
         $dir = is_dir('images/') ? 'images/' : __DIR__.'/../../../web/'.'images/';
 
         if (is_string($file)) {

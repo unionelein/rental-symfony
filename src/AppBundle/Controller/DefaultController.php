@@ -217,9 +217,11 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('404');
         }
 
-        $deliveryPrice = $em->getRepository(AppConfig::class)->findOneBy([
+        $appVar = $em->getRepository(AppConfig::class)->findOneBy([
             "name" => AppConfig::DELIVERY_PRICE
-        ])->getValue()? : 0;
+        ]);
+
+        $deliveryPrice = $appVar ? $appVar->getValue() : 0;
 
         if ($request->isXmlHttpRequest()) {
             return new JsonResponse([

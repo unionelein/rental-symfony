@@ -1,3 +1,17 @@
+{% import _self as pageMacros %}
+
+{% macro page(page, value, currentPage) %}
+    <li class="{% if value == currentPage %}active{% endif %}">
+        {% set params = (app.request.attributes.get('_route_params') | merge({'page': page})) %}
+        <a class="js-page"
+           href="{{ path(app.request.attributes.get('_route'), params) }}"
+           data-url="{{ path(app.request.attributes.get('_route'), params) }}"
+        >
+            {{ value|raw }}
+        </a>
+    </li>
+{% endmacro %}
+
 {% for product in products %}
     {% set type_name = product.type ? "pokypka" : "arenda" %}
     <a href="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
@@ -19,15 +33,21 @@
     <div class="clear"></div>
     <div class="pag">
         <ul class="pagination">
-        {% for i in 1..countOfPages %}
-            {% set params = (app.request.attributes.get('_route_params') | merge({'page': i})) %}
-            <li class="{% if i == currentPage %}active{% endif %}">
-                <a class="js-page"
-                   href="{{ path(app.request.attributes.get('_route'), params) }}"
-                   data-url="{{ path(app.request.attributes.get('_route'), params) }}"
-                >{{ i }}</a>
-            </li>
-        {% endfor %}
+            {% set offset = 2 %}
+
+            {% if currentPage > (offset + 1) %}
+                {{ pageMacros.page(currentPage - 1, '<i class="fa fa-angle-left"></i>', currentPage) }}
+            {% endif %}
+
+            {% for i in 1..countOfPages %}
+                {% if i >= (currentPage - offset) and i <= (currentPage + offset)  %}
+                    {{ pageMacros.page(i, i, currentPage) }}
+                {% endif %}
+            {% endfor %}
+
+            {% if currentPage < (countOfPages - offset - 1) %}
+                {{ pageMacros.page(currentPage + 1, '<i class="fa fa-angle-right"></i>', currentPage) }}
+            {% endif %}
         </ul>
     </div>
 {% endif %}

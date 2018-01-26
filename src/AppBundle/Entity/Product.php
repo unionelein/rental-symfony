@@ -22,10 +22,10 @@ class Product
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=22, nullable=false)
+     * @ORM\Column(type="string", length=30, nullable=false)
      * @Assert\Length(
-     *      max = 22,
-     *      maxMessage = "Название должно быть не больше 22 символов"
+     *      max = 30,
+     *      maxMessage = "Название должно быть не больше 30 символов"
      * )
      */
     private $name;
@@ -52,10 +52,10 @@ class Product
     private $price;
 
     /**
-     * @ORM\Column(type="string", length=120)
+     * @ORM\Column(type="string", length=150)
      * @Assert\Length(
-     *      max = 120,
-     *      maxMessage = "Короткое описание должно быть не больше 120 символов"
+     *      max = 150,
+     *      maxMessage = "Короткое описание должно быть не больше 150 символов"
      * )
      */
     private $shortDescription;
