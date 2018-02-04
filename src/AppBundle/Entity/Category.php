@@ -20,10 +20,10 @@ class Category
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=14)
+     * @ORM\Column(type="string", length=25)
      * @Assert\Length(
-     *      max = 20,
-     *      maxMessage = "Название должно быть не больше 20 символов"
+     *      max = 25,
+     *      maxMessage = "Название должно быть не больше 25 символов"
      * )
      */
     private $name;

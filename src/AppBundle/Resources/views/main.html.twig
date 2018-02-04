@@ -3,9 +3,9 @@
 {% block content %}
     <div class="text-center nav-wrapper">
         <div class="nav-type">
-            <a class="first {% if type == 'all' %}active-type{% endif %}" title="Весь ассортимент" href="{{ path('mainpage') }}"�>Весь ассортимент</a>
-            <a {% if type == constant('AppBundle\\Services\\AppManager::PROKAT') %}class="active-type"{% endif %} title="Прокат электроинструмента в �Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::PROKAT') }) }}">Прокат инструмента</a>
-            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" title="Купить стройматериалы в гом�Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}">Стройматериалы</a>
+            <a class="first {% if type == 'all' %}active-type{% endif %}" title="Весь ассортимент" href="{{ path('mainpage') }}"�>Весь ассортимент</a>
+            <a {% if type == constant('AppBundle\\Services\\AppManager::PROKAT') %}class="active-type"{% endif %} title="Прокат электроинструмента в Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::PROKAT') }) }}">Прокат инструмента</a>
+            <a class="last {% if type == constant('AppBundle\\Services\\AppManager::POKYPKA') %}active-type{% endif %}" title="Купить стройматериалы в Гомеле" href="{{ path('homepage', { typeName: constant('AppBundle\\Services\\AppManager::POKYPKA') }) }}">Стройматериалы</a>
             <div class="clear"></div>
         </div>
     </div>
@@ -21,13 +21,13 @@
                 {% for category in categories %}
                     {% set params = type == 'all' ? { categorySlug: category.slug } : {typeName: category.type, categorySlug: category.slug} %}
                     {% set route = type == 'all' ? 'products_by_category' : 'products_by_category_and_type' %}
-                    <a href="{{ path(route, params) }}"
-                       title="{{ category.name }}"
+                    <h3><a href="{{ path(route, params) }}"
+                       title="Купить {{ category.name }} в Гомеле"
                        data-url="{{ path(route, params) }}"
                        class="category js-category {% if currentCategory is defined and currentCategory == category.slug %}active-category{% endif %}">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         {{ category.name }}
-                    </a>
+                    </a></h3>
 
                 {% endfor %}
             </nav>

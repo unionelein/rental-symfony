@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class AppConfig
 {
     const DELIVERY_PRICE = "Цена для бесплатной доставки";
+    const CONTACTS_INFO  = "Информация о контактах";
 
     /**
      * @ORM\Id
@@ -32,7 +33,7 @@ class AppConfig
     private $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text")
      */
     private $value;
 

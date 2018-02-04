@@ -18,11 +18,11 @@
        data-url="{{ path('product', { categorySlug: product.category.slug, productSlug: product.slug }) }}"
        class="product-wrapper js-product">
         <strong class="type {{ product.type ? "green" : "red" }}">{{ product.type ? "Покупка" : "Прокат" }}</strong>
-        <h2 class="name">{{ product.name }}</h2>
+        <h3 class="name">{{ product.name }}</h3>
         <div class="product-img">
             <img src="{{ asset('images/' ~ product.imgMin) }}" alt="{{ product.name }}">
         </div>
-        <h3 class="short-description">{{ product.shortDescription }}</h3>
+        <h5 class="short-description">{{ product.shortDescription }}</h5>
         <span class="price"><span class="number">{{ product.price }}</span> руб{% if type_name == "arenda" %}/сутки{% endif %}</span>
     </a>
 {% else %}
