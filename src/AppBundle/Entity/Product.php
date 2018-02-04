@@ -24,8 +24,8 @@ class Product
     /**
      * @ORM\Column(type="string", length=30, nullable=false)
      * @Assert\Length(
-     *      max = 30,
-     *      maxMessage = "Название должно быть не больше 30 символов"
+     *      max = 45,
+     *      maxMessage = "Название должно быть не больше 45 символов"
      * )
      */
     private $name;
